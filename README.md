@@ -4,7 +4,7 @@
 
 This project solves the time-independent radial Schrödinger equation using the Numerov method on a logarithmic grid. The physical system under study is a hydrogen-like atom perturbed by a short-range interaction. The main goal is to investigate how different approximations — including effective theories derived from renormalization techniques — can reproduce the phase shifts and energy data of an unknown short-range potential.
 
-The inspiration comes from renormalization techniques explained by G. P. Lepage in [this lectures](https://arxiv.org/abs/nucl-th/9706029).
+The inspiration comes from renormalization techniques explained by G. P. Lepage in [these lectures](https://arxiv.org/abs/nucl-th/9706029).
 
 ---
 
@@ -29,7 +29,7 @@ The code auto-generates several directories (`potentials/`, `eigenfunctions/`, `
 | Library        | Purpose                                                                 |
 |----------------|-------------------------------------------------------------------------|
 | numpy          | Efficient array operations and mathematical functions                   |
-| pandas         | Organizing numerical data into readable tables to print and/or save to .csv files,                    |
+| pandas         | Organizing numerical data into readable tables to print and/or save to .csv files                  |
 | matplotlib     | Plotting wavefunctions, potentials, and relative errors                 |
 | scipy.special.erf | Used in smoothing the Coulomb potential (cutoff regularization)         |
 | scipy.optimize.minimize | Minimization of cost functions to tune parameters in effective theory |
@@ -46,8 +46,10 @@ The main executive cells aim to:
    - Coulomb + short-range exponential potential.
    - Regularized Coulomb + smeared delta function (effective theory).
 2. Compare eigenvalues and phase shifts from different potentials.
-They exploit functions and parameters defined in the preceding cells of the program.
-The global parameters are defined and commented at the beginning of the program, in the cell named "Choice of the Global Parametes", and can be modified as the user wishes.
+
+   
+They exploit functions and parameters defined in the preceding cells of the program, which the user must therefore preliminary run.
+The global parameters are defined and commented at the beginning of the program, in the cell named "Choice of the Global Parameters", and can be freely modified by the user.
 
 
 ---
