@@ -43,10 +43,10 @@ The program is divided into various cells which can be run separately.
 The main executive cells aim to:
 1. Numerically solve the radial Schrödinger equation for:
    - Pure Coulomb potential (estimate the intrinsic error of the numerical method)
-   - Coulomb + short-range exponential potential
-   - Regularized Coulomb + smeared delta function (effective theory)
+   - Coulomb + short-range exponential potential (real theory whose data we want to reproduce with the effective theory)
+   - Regularized Coulomb + smeared delta function potential (effective theory)
 
-2. Compare eigenvalues and phase shifts from different potentials.
+2. Compare eigenvalues and phase shifts from different potentials through the study of relative errors with respect to the real theory.
 
 They exploit functions and parameters defined in the preceding cells of the program, which the user must therefore run preliminarily.
 The global parameters are defined and commented at the beginning of the program, in the cell named Choice of the Global Parameters, and can be freely modified by the user.
