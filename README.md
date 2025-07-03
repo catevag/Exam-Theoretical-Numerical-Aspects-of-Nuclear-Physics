@@ -34,6 +34,7 @@ The code auto-generates several directories (`potentials/`, `eigenfunctions/`, `
 | `scipy.special.erf`      | Used in smoothing the Coulomb potential (cutoff regularization)         |
 | `scipy.optimize.minimize`| Minimization of cost functions to tune parameters in effective theory   |
 | `os`, `sys`              | Directory creation and clean error messages                             |
+| `matplotlib.cm`          | Color map for the plots                                                 |
 
 ---
 
@@ -94,7 +95,7 @@ A more detailed analysis of the code is carried out in the file TNANPpresentatio
 | Code             | `lepage_analysis.py`                                          | `lepage_analysis_new.py`                                      |
 |---------------------|---------------------------------------------------------------|----------------------------------------------------------------|
 | **Real Potential** (can be modified by the user)  | $V_{\text{real}}(r) = -\dfrac{1}{r} - \dfrac{e^{-r}}{r}$        | $V_{\text{real}}(r) = -\dfrac{1}{r} - \dfrac{1}{1 + e^r}$        |
-| **Effective Potential** (can be modified by the user)  | $V_{\text{eff}}(r) = -\dfrac{1}{r}  \text{erf}\left( \dfrac{r}{\sqrt{2} a} \right) + c  a^2  \dfrac{ e^{-r/a}}{8 \pi a^3} + d_1  a^4  \left( \dfrac{r}{a} - 2 \right) \dfrac{  e^{-r/a}}{8 \pi a^4 r}$ | $V_{\text{eff}}(r) = -\dfrac{1}{r}  \text{erf}\left( \dfrac{r}{\sqrt{2} a} \right) + \dfrac{c  a^2  e^{-r^2 / (2 a^2)}}{(2\pi)^{3/2} a^3} + d_1  a^4 \left( \dfrac {r^2} {a^2} - 3 \right) \dfrac{ e^{-r^2 / (2 a^2)}}{(2\pi)^{3/2} a^5}$ |
+| **Effective Potential** (can be modified by the user)  | $V_{\text{eff}}(r) = -\dfrac{1}{r}  \text{erf}\left( \dfrac{r}{\sqrt{2} a} \right) + c  a^2  \dfrac{ e^{-r/a}}{8 \pi a^3} + d_1  a^4  \left( \dfrac{r}{a} - 2 \right) \dfrac{  e^{-r/a}}{8 \pi a^4 r}$ | $V_{\text{eff}}(r) = -\dfrac{1}{r}  \text{erf}\left( \dfrac{r}{\sqrt{2} a} \right) + c  a^2 \dfrac{ e^{-r^2 / (2 a^2)}}{(2\pi)^{3/2} a^3} + d_1  a^4 \left( \dfrac {r^2} {a^2} - 3 \right) \dfrac{ e^{-r^2 / (2 a^2)}}{(2\pi)^{3/2} a^5}$ |
 | **Improvements** | | - Improved plots of relative errors for the effective theory across cutoff values.<br>- Enhanced eigenvalue-finding algorithm in the Schrödinger solver for stability and accuracy. |
 
 ---
