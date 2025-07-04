@@ -89,7 +89,7 @@ A more detailed analysis of the code is carried out in the file TNANPpresentatio
 | **Improvements** | | - Improved plots of relative errors for the effective theory across cutoff values.<br>- Enhanced eigenvalue-finding algorithm in the Schrödinger solver for stability and accuracy. |
 
 
-Notice that the effective potential in the new file is not singular at `r = 0`. It is a Woods-Saxon potential used to test the effective theory, but it can be freely set back to a singular potential. 
+Notice that the short-range potential in the new file is not singular at `r = 0`. It is a Woods-Saxon potential used to test the effective theory, but it can be freely set back to a singular potential. 
 
 ---
 
