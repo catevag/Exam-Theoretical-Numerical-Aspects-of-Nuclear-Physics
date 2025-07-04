@@ -14,18 +14,6 @@ The inspiration comes from renormalization techniques explained by G. P. Lepage 
 
 This code is written in Python and depends on the following libraries, imported at the beginning of the program:
 
-- `numpy`
-- `pandas`
-- `matplotlib`
-- `scipy`
-- `os`, `sys`
-
-The code auto-generates several directories (`potentials/`, `eigenfunctions/`, `energy/`, `phase_shift/`, `relative_errors/`) to store results and plots.
-
----
-
-### Libraries Used and Their Role
-
 | Library                   | Purpose                                                                 |
 |--------------------------|-------------------------------------------------------------------------|
 | `numpy`                  | Efficient array operations and mathematical functions                   |
@@ -35,6 +23,9 @@ The code auto-generates several directories (`potentials/`, `eigenfunctions/`, `
 | `scipy.optimize.minimize`| Minimization of cost functions to tune parameters in effective theory   |
 | `os`, `sys`              | Directory creation and clean error messages                             |
 | `matplotlib.cm`          | Color map for the plots                                                 |
+
+
+The code auto-generates several directories (`potentials/`, `eigenfunctions/`, `energy/`, `phase_shift/`, `relative_errors/`) to store results and plots.
 
 ---
 
