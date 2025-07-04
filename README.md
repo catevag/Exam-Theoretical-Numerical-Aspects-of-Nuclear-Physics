@@ -51,6 +51,8 @@ The main executive cells aim to:
 
 They exploit functions and parameters defined in the preceding cells of the program, which the user must therefore run preliminarily.
 The global parameters are defined and commented at the beginning of the program, in the cell named Choice of the Global Parameters, and can be freely modified by the user.
+The user can also modify the form of the short-range potential and of the effective potential as they wish.
+This must be done inside the functions which initialize the two potentials, in the first part of the code, namely `short_range_initialization` and `effective_initialization`. One **example** for a certain choice of these potentials is carried out in the presentation TNANPpresentation.pdf.
 
 ---
 
@@ -60,13 +62,10 @@ The global parameters are defined and commented at the beginning of the program,
    - Uses a logarithmic grid x = log(r) to better handle the singularity at `r = 0` while keeping constant spacing for Numerov.
 
 2. **Potential Setup**
-   - Three main potentials are defined, and saved as `.csv` and `.pdf` files:
-     - `v_coulomb = -1/r`
-     - `v_real` (used to generate "true" data)
-     - `v_eff`: regularized potential with parameters tuned via phase shifts
-
-   The user can modify the form of the short-range potential and of the effective potential as they wish.
-   This must be done inside the functions which initialize the two potentials, in the first part of the code, namely     `short_range_initialization` and `effective_initialization`. One example for a certain choice of these potentials is carried out in the presentation TNANPpresentation.pdf.
+   - Three main potentials are defined, and saved as `.csv` and plotted as `.pdf` files:
+     - `coulomb`: `-1/r`
+     - `real` (used to generate "true" data)
+     - `effective`: regularized potential with parameters tuned via phase shifts
 
 3. **Solving Schrödinger Equation Using Numerov Integration**
    - Solves the Schrödinger equation using an outward + inward integration scheme
