@@ -615,7 +615,7 @@ plt.xlim(0, 10)
 plt.plot(r, v_potential_3, color='green', label=r'V(r), atomic units')
 plt.legend()
 plt.savefig("potentials/effective_potential_a2_plot.pdf")
-plt.show()
+#plt.show()
 
 plt.close()
 #initialize arrays for eigenvalues, eigenfunctions and phase shifts
