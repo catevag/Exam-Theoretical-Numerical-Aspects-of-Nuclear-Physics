@@ -851,10 +851,10 @@ for j in range(n_checks_a):
         
         print("\n ----------------------------------------------- \n")
         
-    # Store results
-    e_eff_a2_comp[:, j] = e_eff_a2_temp
-    y_eff_a2_comp[:, :, j] = y_eff_a2_temp
-    ph_shift_eff_a2_comp[:, j] = ph_shift_eff_a2_temp
+        # Store results
+        e_eff_a2_comp[:, j] = e_eff_a2_temp
+        y_eff_a2_comp[:, :, j] = y_eff_a2_temp
+        ph_shift_eff_a2_comp[:, j] = ph_shift_eff_a2_temp
 
 #%% a values plot
 
