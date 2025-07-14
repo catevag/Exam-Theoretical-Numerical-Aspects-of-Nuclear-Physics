@@ -62,8 +62,19 @@ def coulomb_initialization(r):
 def short_range_initialization(r):
 
     #definition of the potential
-    #v_potential = -1/r - ( np.exp(- r)) / r 
-    v_potential = -1/r - 1 / (1 + np.exp(r))
+    #example1:
+    #v_potential = -1 / r - ( np.exp(- r)) / r 
+    
+    #woods-saxon:
+    v_potential = -1 / r - 1 / (1 + np.exp(r))
+    
+    #example 2:
+    #v_potential = -1 / r - 2 * ( np.exp(- np.power(r, 2)))
+    
+    #finite well:
+    #v_potential = np.zeros_like(r)
+    #v_potential[r < a] = -10
+    #v_potential[r >= a] = -1 / r[r >= a]
 
     #saving the potential to CSV
     df_pot = pd.DataFrame({"r": r, "V(r)": v_potential})
@@ -111,24 +122,24 @@ def effective_initialization(r, a, c, d_1):
     
 
     #plotting the potential
-    plt.figure()
+    #plt.figure()
 
-    plt.title("Effective Potential")
-    plt.xlabel("r")
-    plt.ylabel("V(r)")
-    plt.grid(True)
-    plt.xlim(0, 10)
+    #plt.title("Effective Potential")
+    #plt.xlabel("r")
+    #plt.ylabel("V(r)")
+    #plt.grid(True)
+    #plt.xlim(0, 10)
     #plt.show()
-    plt.plot(r, v_potential, color='green', label=r'V(r), atomic units')
-    plt.legend()
+    #plt.plot(r, v_potential, color='green', label=r'V(r)')
+    #plt.legend()
 
-    if d_1 == 0:
-        plt.savefig("potentials/effective_potential_a2_plot.pdf")
-    else:
-        plt.savefig("potentials/effective_potential_a4_plot.pdf")
+    #if d_1 == 0:
+        #plt.savefig("potentials/effective_potential_a2_plot.pdf")
+    #else:
+        #plt.savefig("potentials/effective_potential_a4_plot.pdf")
     
 
-    plt.close()
+    #plt.close()
 
 
     return v_potential
@@ -595,7 +606,7 @@ v_potential_3 = effective_initialization(r, a, c_a2, 0)
 v_potential_3_name = "effective_a^2"
 
 plt.figure()
-plt.title("Effective Potential")
+plt.title("Effective Potential a^2")
 plt.xlabel("r")
 plt.ylabel("V(r)")
 plt.grid(True)
@@ -603,6 +614,7 @@ plt.xlim(0, 10)
 
 plt.plot(r, v_potential_3, color='green', label=r'V(r), atomic units')
 plt.legend()
+plt.savefig("potentials/effective_potential_a2_plot.pdf")
 plt.show()
 
 plt.close()
@@ -642,11 +654,12 @@ v_potential_4 = effective_initialization(r, a, c_a4, d_1)
 v_potential_4_name = "effective_a^4"
 
 plt.figure()
-plt.title("Effective Potential")
+plt.title("Effective Potential a^4")
 plt.xlabel("r")
 plt.ylabel("V(r)")
 plt.grid(True)
 plt.xlim(0, 10)
+plt.savefig("potentials/effective_potential_a4_plot.pdf")
 #plt.show()
 plt.plot(r, v_potential_4, color='green', label=r'V(r), atomic units')
 plt.legend()
@@ -808,8 +821,9 @@ for j in range(n_checks_a):
     
     # use data already computed
     if (a_values[j] == a):
-        v_potential_3_temp = v_potential_3
-        v_potential_3_name_temp = f"effective_a^2_{a_values[j]}"
+        e_eff_a2_comp[:, j] = e_eff_a2
+        y_eff_a2_comp[:, :, j] = y_eff_a2
+        ph_shift_eff_a2_comp[:, j] = ph_shift_eff_a2
     else:
     # Compute parameter minimizing the phase shift
         result1 = minimize(
@@ -824,7 +838,7 @@ for j in range(n_checks_a):
         print(f"(a^2 theory), a = {a_values[j]}:    c = {c_a2_temp} \n")
         
         # Initialize potential
-        v_potential_3_temp = effective_initialization(r, a_values[j], c_a2, 0)
+        v_potential_3_temp = effective_initialization(r, a_values[j], c_a2_temp, 0)
         v_potential_3_name_temp = f"effective_a^2_{a_values[j]}"
         
         
@@ -835,13 +849,12 @@ for j in range(n_checks_a):
             n_grid, dx, v_potential_3_temp, r2, r, sqrt_r, i_100
             )
         
-    print("\n ----------------------------------------------- \n")
+        print("\n ----------------------------------------------- \n")
         
     # Store results
     e_eff_a2_comp[:, j] = e_eff_a2_temp
     y_eff_a2_comp[:, :, j] = y_eff_a2_temp
     ph_shift_eff_a2_comp[:, j] = ph_shift_eff_a2_temp
-
 
 #%% a values plot
 
