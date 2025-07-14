@@ -805,36 +805,43 @@ y_eff_a2_temp = np.zeros((n_max, n_grid + 1))
 ph_shift_eff_a2_temp = np.zeros(n_max)
 
 for j in range(n_checks_a):
+    
+    # use data already computed
+    if (a_values[j] == a):
+        v_potential_3_temp = v_potential_3
+        v_potential_3_name_temp = f"effective_a^2_{a_values[j]}"
+    else:
     # Compute parameter minimizing the phase shift
-    result1 = minimize(
-        cost_function_1,
-        c_a2_comp,
-        method='nelder-mead',
-        args=(a_values[j], n_grid, dx, r2, r, sqrt_r, n_max),
-        options={'maxiter': 10000, 'maxfev': 10000, 'xatol': 1E-8, 'disp': False}
-    )
-    c_a2_temp = result1.x
-
-    print(f"(a^2 theory), a = {a_values[j]}:    c = {c_a2_temp} \n")
-
-    # Initialize potential
-    v_potential_3_temp = effective_initialization(r, a_values[j], c_a2, 0)
-    v_potential_3_name_temp = f"effective_a^2_{a_values[j]}"
-
-   
-
-    # Analysis
-    e_eff_a2_temp, y_eff_a2_temp, ph_shift_eff_a2_temp = analysis(
-        n_max, v_potential_3_name_temp, e_eff_a2_temp, ph_shift_eff_a2_temp, y_eff_a2_temp,
-        n_grid, dx, v_potential_3_temp, r2, r, sqrt_r, i_100
-    )
-
+        result1 = minimize(
+            cost_function_1,
+            c_a2_comp,
+            method='nelder-mead',
+            args=(a_values[j], n_grid, dx, r2, r, sqrt_r, n_max),
+            options={'maxiter': 10000, 'maxfev': 10000, 'xatol': 1E-8, 'disp': False}
+            )
+        c_a2_temp = result1.x
+        
+        print(f"(a^2 theory), a = {a_values[j]}:    c = {c_a2_temp} \n")
+        
+        # Initialize potential
+        v_potential_3_temp = effective_initialization(r, a_values[j], c_a2, 0)
+        v_potential_3_name_temp = f"effective_a^2_{a_values[j]}"
+        
+        
+        
+        # Analysis
+        e_eff_a2_temp, y_eff_a2_temp, ph_shift_eff_a2_temp = analysis(
+            n_max, v_potential_3_name_temp, e_eff_a2_temp, ph_shift_eff_a2_temp, y_eff_a2_temp,
+            n_grid, dx, v_potential_3_temp, r2, r, sqrt_r, i_100
+            )
+        
     print("\n ----------------------------------------------- \n")
-
+        
     # Store results
     e_eff_a2_comp[:, j] = e_eff_a2_temp
     y_eff_a2_comp[:, :, j] = y_eff_a2_temp
     ph_shift_eff_a2_comp[:, j] = ph_shift_eff_a2_temp
+
 
 #%% a values plot
 
